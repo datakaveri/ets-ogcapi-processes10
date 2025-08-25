@@ -121,6 +121,7 @@ public class JobList extends CommonFixture {
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpUriRequest request = new HttpGet(getJobListURL.toString());
 			request.setHeader("Accept", "application/json");
+            request.setHeader("Authorization", authorizationToken);
 			this.reqEntity = request;
 			HttpResponse httpResponse = client.execute(request);
 			StringWriter writer = new StringWriter();
@@ -160,6 +161,7 @@ public class JobList extends CommonFixture {
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpUriRequest request = new HttpGet(getJobListURL.toString());
 			request.setHeader("Accept", "application/json");
+            request.setHeader("Authorization", authorizationToken);
 			this.reqEntity = request;
 			HttpResponse httpResponse = client.execute(request);
 			StringWriter writer = new StringWriter();

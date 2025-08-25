@@ -217,6 +217,7 @@ public class Jobs extends CommonFixture {
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpUriRequest request = new HttpGet(rootUri + echoProcessPath);
 			request.setHeader("Accept", "application/json");
+            request.setHeader("Authorization", authorizationToken);
 			HttpResponse httpResponse = client.execute(request);
 			StringWriter writer = new StringWriter();
 			String encoding = StandardCharsets.UTF_8.name();
@@ -246,6 +247,7 @@ public class Jobs extends CommonFixture {
 			HttpClient client = HttpClientBuilder.create().build();
 			HttpUriRequest request = new HttpGet(rootUri + echoProcessPath);
 			request.setHeader("Accept", "application/json");
+            request.setHeader("Authorization", authorizationToken);
 			HttpResponse httpResponse = client.execute(request);
 			StringWriter writer = new StringWriter();
 			String encoding = StandardCharsets.UTF_8.name();
@@ -1310,6 +1312,7 @@ public class Jobs extends CommonFixture {
 		HttpPost request = new HttpPost(executeEndpoint);
 		this.reqEntity = request;
 		request.setHeader("Accept", "application/json");
+        request.setHeader("Authorization", authorizationToken);
 		ContentType contentType = ContentType.APPLICATION_JSON;
 		request.setEntity(new StringEntity(executeNode.toString(), contentType));
 		return request;
@@ -1320,6 +1323,7 @@ public class Jobs extends CommonFixture {
 		this.reqEntity = request;
 		request.setHeader("Accept", "application/json");
 		request.setHeader("Prefer", "respond-async");
+        request.setHeader("Authorization", authorizationToken);
 		ContentType contentType = ContentType.APPLICATION_JSON;
 		request.setEntity(new StringEntity(executeNode.toString(), contentType));
 		HttpResponse httpResponse = clientBuilder.build().execute(request);
@@ -1431,6 +1435,7 @@ public class Jobs extends CommonFixture {
 				this.reqEntity = request;
 				request.setHeader("Accept", "application/json");
 				request.setHeader("Prefer", "respond-async ");
+                request.setHeader("Authorization", authorizationToken);
 				ContentType contentType = ContentType.APPLICATION_JSON;
 				request.setEntity(new StringEntity(executeNode.toString(), contentType));
 				httpResponse = client.execute(request);
@@ -1441,6 +1446,7 @@ public class Jobs extends CommonFixture {
 				client = HttpClientBuilder.create().build();
 				HttpGet statusRequest = new HttpGet(locationString);
 				request.setHeader("Accept", "application/json");
+                request.setHeader("Authorization", authorizationToken);
 				httpResponse = client.execute(statusRequest);
 				StringWriter writer = new StringWriter();
 				String encoding = StandardCharsets.UTF_8.name();
@@ -1643,6 +1649,7 @@ public class Jobs extends CommonFixture {
 		HttpGet request = new HttpGet(url);
 		this.reqEntity = request;
 		request.setHeader("Accept", acceptType);
+        request.setHeader("Authorization", authorizationToken);
 		return clientBuilder.build().execute(request);
 	}
 
@@ -1869,6 +1876,7 @@ public class Jobs extends CommonFixture {
 			HttpPost request = new HttpPost(executeEndpoint);
 			this.reqEntity = request;
 			request.setHeader("Accept", "application/json");
+            request.setHeader("Authorization", authorizationToken);
 			ContentType contentType = ContentType.APPLICATION_JSON;
 			request.setEntity(new StringEntity(executeNode.toString(), contentType));
 			HttpResponse httpResponse = client.execute(request);
@@ -2400,6 +2408,7 @@ public class Jobs extends CommonFixture {
 					if (currentJsonNode.get("rel").asText() == "monitor") {
 						HttpUriRequest request = new HttpGet(currentJsonNode.get("href").asText());
 						request.setHeader("Accept", "application/json");
+                        request.setHeader("Authorization", authorizationToken);
 						HttpResponse httpResponse = client.execute(request);
 						JsonNode resultNode = parseResponse(httpResponse);
 						loopOverStatus(resultNode);
@@ -2464,6 +2473,7 @@ public class Jobs extends CommonFixture {
 					if (relString.equals("monitor") || relString.equals("status")) {
 						HttpUriRequest request = new HttpGet(currentJsonNode.get("href").asText());
 						request.setHeader("Accept", "application/json");
+                        request.setHeader("Authorization", authorizationToken);
 						HttpResponse httpResponse = client.execute(request);
 						JsonNode resultNode = parseResponse(httpResponse);
 						try {
@@ -2694,6 +2704,7 @@ public class Jobs extends CommonFixture {
 				HttpPost request = new HttpPost(executeEndpoint);
 				request.setHeader("Accept", "application/json");
 				request.setHeader("Prefer", "respond-async ");
+                request.setHeader("Authorization", authorizationToken);
 				ContentType contentType = ContentType.APPLICATION_JSON;
 				request.setEntity(new StringEntity(executeNode.toString(), contentType));
 				HttpResponse httpResponse = client.execute(request);
@@ -2704,6 +2715,7 @@ public class Jobs extends CommonFixture {
 				client = HttpClientBuilder.create().build();
 				HttpGet statusRequest = new HttpGet(locationString);
 				request.setHeader("Accept", "application/json");
+                request.setHeader("Authorization", authorizationToken);
 				httpResponse = client.execute(statusRequest);
 				StringWriter writer = new StringWriter();
 				String encoding = StandardCharsets.UTF_8.name();
