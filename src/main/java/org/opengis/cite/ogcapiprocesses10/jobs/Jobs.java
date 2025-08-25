@@ -202,8 +202,8 @@ public class Jobs extends CommonFixture {
 			getResultValidator = new OperationValidator(openApi3, getResultPath, getResultOperation);
 			getJobsListURL = new URL(jobsListEndpointString);
 			getProcessesListURL = new URL(processListEndpointString);
-			getInvalidJobURL = new URL(jobsListEndpointString + "/invalid-job-" + UUID.randomUUID());
-			getInvalidJobResultURL = new URL(jobsListEndpointString + "/invalid-job-" + UUID.randomUUID() + "/results");
+			getInvalidJobURL = new URL(jobsListEndpointString + "/" + UUID.randomUUID());
+			getInvalidJobResultURL = new URL(jobsListEndpointString + "/" + UUID.randomUUID() + "/results");
 			clientBuilder = HttpClientBuilder.create();
 		}
 		catch (Exception e) {
