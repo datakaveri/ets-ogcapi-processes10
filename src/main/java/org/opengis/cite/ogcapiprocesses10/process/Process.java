@@ -78,7 +78,7 @@ public class Process extends CommonFixture {
 			final Path path = openApi3.getPathItemByOperationId(OPERATION_ID_GET_PROCESS_DESCRIPTION);
 			final Operation operation = openApi3.getOperationById(OPERATION_ID_GET_PROCESS_DESCRIPTION);
 			getProcessDescriptionValidator = new OperationValidator(openApi3, path, operation);
-			getInvalidProcessURL = new URL(processListEndpointString + "/invalid-process-" + UUID.randomUUID());
+			getInvalidProcessURL = new URL(processListEndpointString + "/" + UUID.randomUUID());
 		}
 		catch (MalformedURLException | ResolutionException | ValidationException e) {
 			Assert.fail(

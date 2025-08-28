@@ -85,6 +85,21 @@ public class SuiteFixtureListener implements ISuiteListener {
 							TestRunArg.ECHOPROCESSID.toString(), echoProcessId));
 		}
 
+        String token = params.get(TestRunArg.TOKEN.toString());
+        try {
+            if (token != null) {
+                suite.setAttribute(SuiteAttribute.TOKEN.getName(), token.trim());
+                TestSuiteLogger.log(Level.INFO, "Authorization token configured for test suite");
+            } else {
+                TestSuiteLogger.log(Level.INFO, "No authorization token provided - tests will run without authentication");
+            }
+        }
+        catch (NumberFormatException e) {
+            TestSuiteLogger.log(Level.WARNING,
+                    String.format("Could not parse parameter %s: %s. Expected is a valid string",
+                            TestRunArg.TOKEN.toString(), token));
+        }
+
 		String limit = params.get(TestRunArg.PROCESSTESTLIMIT.toString());
 		try {
 			if (limit != null) {

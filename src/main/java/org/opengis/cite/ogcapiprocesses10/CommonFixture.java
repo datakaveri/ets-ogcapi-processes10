@@ -71,6 +71,8 @@ public class CommonFixture {
 
 	protected int limit = -1;
 
+    protected String authorizationToken;
+
 	protected boolean testAllProcesses = false;
 
 	/** A String representing the request. */
@@ -106,6 +108,8 @@ public class CommonFixture {
 		initLogging();
 		rootUri = (URI) testContext.getSuite().getAttribute(SuiteAttribute.IUT.getName());
 		limit = (Integer) testContext.getSuite().getAttribute(SuiteAttribute.PROCESS_TEST_LIMIT.getName());
+        // Initialize authorization token
+        authorizationToken = (String) testContext.getSuite().getAttribute(SuiteAttribute.TOKEN.getName());
 		boolean useLocalSchema = (boolean) testContext.getSuite()
 			.getAttribute(SuiteAttribute.USE_LOCAL_SCHEMA.getName());
 		if (useLocalSchema) {
@@ -158,7 +162,7 @@ public class CommonFixture {
 	 * @return a {@link io.restassured.specification.RequestSpecification} object
 	 */
 	protected RequestSpecification init() {
-		return given().filters(requestLoggingFilter, responseLoggingFilter).log().all();
+        return given().header("Authorization", authorizationToken).filters(requestLoggingFilter, responseLoggingFilter).log().all();
 	}
 
 	/**

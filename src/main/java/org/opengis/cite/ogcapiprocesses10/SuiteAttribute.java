@@ -67,9 +67,14 @@ public enum SuiteAttribute {
 	/**
 	 * Requirement classes parsed from /conformance; Added during execution.
 	 */
-	REQUIREMENTCLASSES("requirementclasses", List.class);
+	REQUIREMENTCLASSES("requirementclasses", List.class),
 
-	private final Class attrType;
+    /**
+     * Authorization token for API requests.
+     */
+    TOKEN("token", String.class);
+
+    private final Class attrType;
 
 	private final String attrName;
 

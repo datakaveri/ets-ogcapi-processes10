@@ -39,7 +39,12 @@ public enum TestRunArg {
 	 * Boolean indicating whether all processes should be tested against the OGC Process
 	 * Description Conformance Class.
 	 */
-	TESTALLPROCESSES;
+	TESTALLPROCESSES,
+
+    /**
+     * Authorization token for API requests.
+     */
+    TOKEN;
 
 	/** {@inheritDoc} */
 	@Override
